@@ -12,6 +12,7 @@ const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 
 
@@ -21,8 +22,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 
+// mongo store
+const store = MongoStore.create({
+    mongoUrl: process.env.MONGODB_URL,
+    crypto: {
+        secret: process.env.MONGO_SESSION_SECRET
+    },
+    touchAfter: 24 * 3600
+});
+
 // express session
 app.use(session({
+    store: store, // use can write only store
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,

@@ -47,11 +47,12 @@
 
 - MONGODB_URL=your_mongodb_url
 - SESSION_SECRET=your_session_secret_code
+- MONGO_SESSION_SECRET=your_mongo_session_secret
 
 # Usage
 
 - npm start
-- http://localhost:3000
+- http://localhost:3000/dashboard
 
 # License
 
