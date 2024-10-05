@@ -1,0 +1,55 @@
+<div class="container mt-4 form-container"></div>
+    <h2 class="text-center mb-3">Update details</h2>
+
+    <div>
+        <form method="post" action="/dashboard/<%= user._id %>?_method=PUT" id="phoneForm" class="needs-validation" novalidate>
+
+            <div class="row g-2 mb-3">
+                <div class="form-floating mb-3 col">
+                    <input type="text" name="user[firstname]" class="form-control fs-5 border-2 border-black" id="firstname"
+                        placeholder="firstname" value="<%= user.firstname %>" required>
+                    <label for="firstname">First Name</label>
+                    <div id="validationServer03Feedback" class="invalid-feedback"> required </div>
+                </div>
+                <div class="form-floating mb-3 col">
+                    <input type="text" name="user[lastname]" class="form-control border-2 border-black" id="lastname"
+                        placeholder="lastname" value="<%= user.lastname %>" required>
+                    <div id="validationServer03Feedback" class="invalid-feedback"> required </div>
+                    <label for="lastname">Last Name</label>
+                </div>
+            </div>
+
+            <div class="row g-2 mb-3">
+                <div class="form-floating mb-3 col">
+                    <input type="tel" name="user[phonenumber]" class="form-control border-2 border-black" id="phonenumber"
+                        placeholder="phonenumber" pattern="^\d{10,}$" value="<%= user.phonenumber %>" required>
+                    <label for="phonenumber">Phone Number</label>
+                    <div id="validationServer03Feedback" class="invalid-feedback">A phone number is required and must be at least 10 digits long.</div>
+                </div>
+                <div class="form-floating mb-3 col">
+                    <input type="email" name="user[email]" class="form-control border-2 border-black" id="email"
+                        placeholder="email" value="<%= user.email %>">
+                    <label for="email">Email</label>
+                    <div class="valid-feedback"> Optional! </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-floating">
+                    <textarea name="user[details]" class="form-control border-2 border-black" placeholder="Leave a comment here"
+                        id="floatingTextarea2" style="min-height: 200px;"><%= user.details %></textarea>
+                    <label for="floatingTextarea2">details...</label>
+                    <div class="valid-feedback"> Optional! </div>
+                </div>
+            </div>
+
+            <div class="text-center my-3">
+                <button class="btn btn-danger">Update Customer details</button>
+            </div>
+
+
+        </form>
+    </div>
+
+
+</div>

@@ -1,0 +1,55 @@
+<div class="container mt-4">
+    <div class="card border-1 border-black">
+        <div class="card-header border-black"> Customer details </div>
+        <div class="card-body">
+            <div class="blockquote mb-0">
+                <p>Customer id : <%= user._id %> </p>
+                <p class="blockquote-footer float-end"><b>Last updated on :</b> <%= user.updatedAt.toDateString()%> <%= user.updatedAt.toLocaleTimeString() %></p>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-4" style="width: 100%;">
+        <div class="card-body">
+            <p class="card-text"><b>Name :</b> <span><%= user.firstname %></span>&nbsp;<span><%= user.lastname %></span></p>
+            <p class="card-text"><b>Phone number : </b><%= user.phonenumber %></p>
+            <p class="card-text"><b>Email : </b><%= user.email %></p>
+            <p class="card-text"><b>Client Overview : </b><%= user.details %></p>
+            <p class="card-text"><b>Created At : </b><%= user.createdAt.toLocaleString() %></p>
+
+            <div class="d-flex gap-4">
+                <a class="btn btn-success" href="/dashboard/<%= user._id %>/edit">Update details</a>
+
+                <form method="post" action="/dashboard/<%= user._id %>?_method=DELETE" id="delete-form">
+                    <button type="submit" id="confirm-deletion" data-id="<%= user._id %>" class="btn btn-danger">Delete Customer details</button>
+                </form>
+            </div>
+
+
+            <button class="btn btn-outline-primary float-end" id="copyButton">Copy Details<i class="fa-solid fa-share" style="padding-left: 5px;"></i></button>
+        </div>
+    </div>
+</div>
+
+
+<!-- copy to clipboard functionality -->
+<script>
+    document.getElementById('copyButton').addEventListener('click', function() {
+        const customerDetails = `
+            Customer Details:
+            Customer id: <%= user._id %>
+            Last updated on: <%= user.updatedAt.toDateString() %> <%= user.updatedAt.toLocaleTimeString() %>
+            Name: <%= user.firstname %> <%= user.lastname %>
+            Phone number: <%= user.phonenumber %>
+            Email: <%= user.email %>
+            Client Overview: <%= user.details %>
+            Created At: <%= user.createdAt.toLocaleString() %>
+        `.trim();
+
+        // Copy to clipboard
+        navigator.clipboard.writeText(customerDetails).then(() => {
+            alert('Customer details copied to clipboard!');
+        }).catch(err => {
+            console.error('Error copying text: ', err);
+        });
+    });
+</script>
