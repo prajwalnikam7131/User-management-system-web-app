@@ -1,12 +1,8 @@
 # User Management System
 
 ## Live Demo
-
-<<<<<<< HEAD
 > Note: Please be patient while the website is loading.
 
-=======
->>>>>>> 220b96f195c56d83f89653d24ce7d308ff04863e
 you can view the live version of the project  [here](https://user-management-system-web-app.onrender.com/dashboard)
 
 # Overview:
