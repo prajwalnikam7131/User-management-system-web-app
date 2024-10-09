@@ -2,6 +2,7 @@
 
 ## Live Demo
 
+<<<<<<< HEAD
 > Note: Please be patient while the website is loading.
 
 you can view the live version of the project  [here](https://user-management-system-web-app.onrender.com/dashboard)
